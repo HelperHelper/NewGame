@@ -8,6 +8,8 @@ demo.state0.prototype = {
       console.log('state0');
      
        addChangeStateEventListeners();
+      game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; //Este pedaso me permite ver todas rerendisaciones posibles para mi escena
+      
   },
   update: function(){}
 };
