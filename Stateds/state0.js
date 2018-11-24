@@ -1,7 +1,9 @@
-var demo = {};
+var demo = {}, centerX = 1500/2, centerY = 1000/2, Rob, speed = 4;
 demo.state0 = function(){};
 demo.state0.prototype = {
-  preload: function(){},
+  preload: function(){
+      game.load.image('Rob', 'Assets/Sprites/Rob.png');
+  },
   create: function(){
    
      game.stage.backgroundColor = '#6666ff';
@@ -10,8 +12,25 @@ demo.state0.prototype = {
        addChangeStateEventListeners();
       game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; //Este pedaso me permite ver todas rerendisaciones posibles para mi escena
       
+     Rob = game.add.sprite(centerX, centerY, 'Rob');
+      Rob.anchor.setTo(0.5,0.5);
+      
   },
-  update: function(){}
+  update: function(){
+      
+      if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+          Rob.x += speed;
+      }
+      else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+          Rob.x -= speed;
+      }
+       if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
+          Rob.y -= speed;
+      }
+      else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+          Rob.y += speed;
+      }
+  }
 };
 
 function changeState(i, stateNum){
